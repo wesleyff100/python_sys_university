@@ -1,5 +1,7 @@
 # Importar biblioteca tempo para delay
 import time
+import json
+
 
 # Definir os menus
 def mostrar_menu_principal():
@@ -23,8 +25,25 @@ def mostrar_menu_operacoes(opcao_menu):
     print("0. Retornar ao menu principal")
     print("=" * 30)
 
+def salvar_arquivo(lista, arquivo):
+    with open(arquivo, 'w') as arquivo_op:
+        json.dump(lista, arquivo_op)
+
+def ler_arquivo(arquivo,):
+    try:
+        with open(arquivo, 'r') as arquivo_op:
+            json.load(arquivo_op)
+            return lista
+    except:
+        return []
+    
+
 # Lista para guardar dados dos estudantes
 estudantes = []
+disciplinas = []
+professores = []
+turmas = []
+matrículas = []
 
 # Variável para gerar códigos de estudante
 proximo_codigo = 1
@@ -52,6 +71,7 @@ def adicionar_estudante():
         print("Estudante cadastrado com sucesso.")
         continuar = input("Deseja adicionar outro estudante? (S/N): ").strip().lower()
         if continuar != 's':
+            salvar_arquivo(estudantes, estudantes.json)
             break
 
 # Função listar estudantes:

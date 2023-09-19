@@ -29,7 +29,19 @@ def mostrar_menu_operacoes(opcao_menu):
 
 # Lista para guardar dados
 estudantes = []
+
+# Variavel gerar proximo código
+proximo_codigo = 1
+
+# Função para gerar um novo código de estudante
+def gerar_codigo():
+    global proximo_codigo
+    codigo = proximo_codigo
+    proximo_codigo += 1
+    return codigo
+
 # Função adicionar aluno:
+
 def adicionar_aluno():
     while True:
         print("=" * 30 )
